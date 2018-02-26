@@ -11,10 +11,11 @@ class unitest(unittest.TestCase):
         self.assertEqual(Solution().climbStairs(Input),Output)
 
 class Solution():
+    def __init__(self):
+        self.dic = {0:1, 1:1}
     def climbStairs(self, n):
-        if n == 0 or n == 1:
-            return 1
-        return self.climbStairs(n-1) + self.climbStairs (n-2)
-
+        if n not in self.dic:
+            self.dic[n] = self.climbStairs(n-1) + self.climbStairs (n-2)
+        return self.dic[n]
 if __name__ == '__main__':
     unittest.main()
